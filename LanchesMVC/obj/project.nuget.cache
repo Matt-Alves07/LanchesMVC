@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "48KxJJsAWZRq78sj4LePC3WqLD0waxfgMlNFm39BaY9LU4Co02cp2+t9ODcNoJoI8WNLvjmAqTM7nT9rXUHTJw==",
+  "success": true,
+  "projectFilePath": "C:\\@Work\\LanchesMVC\\LanchesMVC\\LanchesMVC.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\matha\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512"
+  ],
+  "logs": []
+}
