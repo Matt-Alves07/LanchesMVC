@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  lanches-app:
+    build:
+      context: .
+    ports:
+      - "10000:80"
+    networks:
+      - lanche-network
+    depends_on:
+      - lanches-db
+  
+  lanches-db:
+    image: postgres:10.19
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=postgres
+      - APP_DB_USER=docker
+      - APP_DB_PASS=docker
+      - APP_DB_NAME=docker
+    ports:
+      - 5432:5432
+    networks:
+      - lanche-network
+
+networks:
+  lanche-network:
+    driver: bridge
