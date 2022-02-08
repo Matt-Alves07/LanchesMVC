@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDBContext>(options => options.UseNpgsql("Host=localhost;Port=5432;Pooling=true;Database=lanches;User Id=??;Password=??;"));
+builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDBContext>(options => options.UseNpgsql("Host=localhost;Port=5432;Pooling=true;Database=lanches;User Id=root;Password=postgres;"));
 
 var app = builder.Build();
 

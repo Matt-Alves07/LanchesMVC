@@ -3,7 +3,7 @@ version: '3'
 services:
   lanches-app:
     build:
-      context: .
+      context: ../.
     ports:
       - "10000:80"
     networks:
