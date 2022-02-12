@@ -11,11 +11,13 @@ namespace LanchesMVC.Models
         public int Id { get; set; }
         [Column("nome")]
         [Required(ErrorMessage = "O nome da categoria deve ser preenchido.")]
+        [Display(Name = "Nome")]
         public String Nome { get; set; }
         [Column("descricao")]
         [Required(ErrorMessage = "A descrição da categoria deve ser preenchida.")]
         [MinLength(20, ErrorMessage = "A descrição da categoria deve ter no mínimo {1} caracteres.")]
         [MaxLength(200, ErrorMessage = "A descrição da categoria não deve ter mais de {1} caracteres.")]
+        [Display(Name = "Descrição")]
         public String Descricao { get; set; }
 
         //Lanches
