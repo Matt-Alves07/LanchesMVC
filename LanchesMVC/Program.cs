@@ -1,11 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using LanchesMVC.Models;
+using LanchesMVC.Repositories;
+using LanchesMVC.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDBContext>(options => options.UseNpgsql("Host=localhost;Port=5432;Pooling=true;Database=lanches;User Id=root;Password=postgres;"));
+
+builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDBContext>(
+    options => options.UseNpgsql("Host=localhost;Port=5432;Pooling=true;Database=lanches;User Id=root;Password=postgres;")
+);
+
+builder.Services.AddTransient<ILanchesRepository, LancheRepository>();
+builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 
 var app = builder.Build();
 
