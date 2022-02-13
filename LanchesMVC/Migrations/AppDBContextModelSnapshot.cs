@@ -67,7 +67,7 @@ namespace LanchesMVC.Migrations
 
                     b.Property<string>("DescricaoDetalhada")
                         .HasColumnType("text")
-                        .HasColumnName("descricadetalhada");
+                        .HasColumnName("descricaodetalhada");
 
                     b.Property<bool>("EmEstoque")
                         .HasColumnType("boolean")

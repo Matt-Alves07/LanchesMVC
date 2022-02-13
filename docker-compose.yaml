@@ -1,13 +1,15 @@
-version: '3'
+version: '3.7'
 
 services:
   lanches-app:
+    image: lanchesmvc_lanches-app
     build:
       context: ../.
+      dockerfile: dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "10000:80"
-    networks:
-      - lanche-network
     depends_on:
       - lanches-db
   
@@ -19,17 +21,13 @@ services:
       interval: 10s
       retries: 10
     restart: always
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=postgres
       - APP_DB_USER=docker
       - APP_DB_PASS=docker
       - APP_DB_NAME=docker
-    ports:
-      - 5432:5432
-    networks:
-      - lanche-network
-
-networks:
-  lanche-network:
-    driver: bridge

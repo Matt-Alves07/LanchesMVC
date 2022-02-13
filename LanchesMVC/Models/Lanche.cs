@@ -19,7 +19,7 @@ namespace LanchesMVC.Models
         [MinLength(20, ErrorMessage = "A descrição do lanche deve ter no mínimo {1} caracteres.")]
         [MaxLength(200, ErrorMessage = "A descrição do lanche não pode exceder {1} caracteres.")]
         public String DescricaoCurta { get; set; }
-        [Column("descricadetalhada")]
+        [Column("descricaodetalhada")]
         [Display(Name = "Descrição Completa")]
         public String DescricaoDetalhada { get; set; }
         [Column("preco",TypeName = "decimal(10,2)")]

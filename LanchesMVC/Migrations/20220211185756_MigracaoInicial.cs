@@ -36,7 +36,7 @@ namespace LanchesMVC.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     nome = table.Column<string>(type: "text", nullable: false),
                     descricaocurta = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    descricadetalhada = table.Column<string>(type: "text", nullable: true),
+                    descricaodetalhada = table.Column<string>(type: "text", nullable: true),
                     preco = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
                     imagemurl = table.Column<string>(type: "text", nullable: true),
                     imagemthumbnailurl = table.Column<string>(type: "text", nullable: true),

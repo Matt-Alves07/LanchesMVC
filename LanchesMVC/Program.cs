@@ -9,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDBContext>(
-    options => options.UseNpgsql("Host=localhost;Port=5432;Pooling=true;Database=lanches;User Id=root;Password=postgres;")
+    //options => options.UseNpgsql("Host=lanches-db;Port=5432;Pooling=true;Database=lanches;User Id=root;Password=postgres;")
+    options => options.UseNpgsql("User ID=root;Password=postgres;Host=host.docker.internal;Port=5432;Database=lanches;Pooling=true;")
 );
 
 builder.Services.AddTransient<ILanchesRepository, LancheRepository>();
