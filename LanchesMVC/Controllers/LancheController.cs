@@ -13,6 +13,9 @@ namespace LanchesMVC.Controllers
 
         public IActionResult List()
         {
+            ViewData["Título"] = "Todos os lanches";
+            ViewData["Data"] = DateTime.Now;
+
             var lanches = _lancheRepository.Lanches;
             return View(lanches);
         }
