@@ -235,4 +235,3 @@ C:\@Work\LanchesMVC\LanchesMVC\obj\Debug\net6.0\LanchesMVC.dll
 C:\@Work\LanchesMVC\LanchesMVC\obj\Debug\net6.0\ref\LanchesMVC.dll
 C:\@Work\LanchesMVC\LanchesMVC\obj\Debug\net6.0\LanchesMVC.pdb
 C:\@Work\LanchesMVC\LanchesMVC\obj\Debug\net6.0\LanchesMVC.genruntimeconfig.cache
-C:\@Work\LanchesMVC\LanchesMVC\obj\Debug\net6.0\LanchesMVC.csproj.AssemblyReference.cache
