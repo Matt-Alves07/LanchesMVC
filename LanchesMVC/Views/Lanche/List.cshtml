@@ -4,12 +4,7 @@
     <div class="row">
         @foreach (var lanche in Model.Lanches)
         {
-            <div class="col-sm-4 col-md-4 col-lg-4">
-                <p> <img src="@lanche.ImagemUrl" class="img-fluid"/> </p>
-                <h3> Preço : R$  @lanche.Preco.ToString() </h3>
-                <h4> Lanche : @lanche.Nome </h4>
-                <p>@lanche.DescricaoCurta</p>
-            </div>
+            <partial name="_LancheResumo" for="@lanche"/>
         }
     </div>
 </div>
