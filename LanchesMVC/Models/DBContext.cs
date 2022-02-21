@@ -7,5 +7,6 @@ namespace LanchesMVC.Models
         public AppDBContext(DbContextOptions<AppDBContext> options) : base(options) { }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Lanche> Lanches { get; set;}
+        public DbSet<CarrinhoCompraItem> CarrinhoCompraItems { get; set; }
     }
 }
