@@ -1,4 +1,6 @@
 ﻿using LanchesMVC.Models;
+using LanchesMVC.Repositories.Interfaces;
+using LanchesMVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +8,20 @@ namespace LanchesMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ILanchesRepository _lancheRepository;
+        public HomeController(ILanchesRepository lanchesRepository)
         {
-            _logger = logger;
+            _lancheRepository = lanchesRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                LanchesPreferidos = _lancheRepository.LanchesPreferidos
+            };
+
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()

@@ -1,7 +1,17 @@
-﻿@{
+﻿@model HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <partial name="_Carousel"/>
+</div>
+
+<h2>Os preferidos da galera</h2>
+
+<div class="row">
+    @foreach(var lanche in Model.LanchesPreferidos)
+    {
+        <partial name="_LancheResumo" for="@lanche"/>
+    }
 </div>

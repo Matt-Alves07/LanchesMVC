@@ -16,6 +16,13 @@ builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDBContext>(
 builder.Services.AddTransient<ILanchesRepository, LancheRepository>();
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 
+//Add session pattern
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddScoped(sp => CarrinhoCompra.GetCarrinhoCompra(sp));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +37,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 
