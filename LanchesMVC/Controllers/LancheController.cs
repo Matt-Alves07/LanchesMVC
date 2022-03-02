@@ -20,23 +20,15 @@ namespace LanchesMVC.Controllers
 
             if (string.IsNullOrEmpty(_categoria))
             {
-                Lanches = _lancheRepository.Lanches.OrderBy(l => l.LancheId);
+                Lanches = _lancheRepository.Lanches
+                    .OrderBy(l => l.LancheId);
                 categoriaAtual = "Todos os lanches";
             }
             else
             {
-                if (string.Equals("Normal", _categoria, StringComparison.OrdinalIgnoreCase))
-                {
-                    Lanches = _lancheRepository.Lanches
-                        .Where(l => l.Categoria.Nome.Equals("Normal"))
-                        .OrderBy(l => l.Nome);
-                }
-                else
-                {
-                    Lanches = _lancheRepository.Lanches
-                        .Where(l => l.Categoria.Nome.Equals("Natural"))
-                        .OrderBy(l => l.Nome);
-                }
+                Lanches = _lancheRepository.Lanches
+                    .Where(l => l.Categoria.Nome.Equals(_categoria, StringComparison.OrdinalIgnoreCase))
+                    .OrderBy(c => c.Nome);
 
                 categoriaAtual = _categoria;
             }
