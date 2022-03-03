@@ -40,15 +40,18 @@ app.UseSession();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "categoriaFiltro",
-    pattern: "Lanche/{action}/{categoria?}",
-    defaults: new { Controller = "Lanche", action = "List" }
-);
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapAreaControllerRoute(
+        name: "categoriaFiltro",
+        areaName: "Lanches",
+        pattern: "Lanche/{controller=Lanche}/{action=List}/{categoria?}"
+    );
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"
-);
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run();

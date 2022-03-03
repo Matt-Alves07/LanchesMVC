@@ -13,12 +13,12 @@ namespace LanchesMVC.Controllers
             _lancheRepository = lancheRepository;
         }
 
-        public IActionResult List(string _categoria)
+        public IActionResult List(string categoria)
         {
             IEnumerable<Lanche> Lanches;
             string categoriaAtual = string.Empty;
 
-            if (string.IsNullOrEmpty(_categoria))
+            if (string.IsNullOrEmpty(categoria))
             {
                 Lanches = _lancheRepository.Lanches
                     .OrderBy(l => l.LancheId);
@@ -27,10 +27,10 @@ namespace LanchesMVC.Controllers
             else
             {
                 Lanches = _lancheRepository.Lanches
-                    .Where(l => l.Categoria.Nome.Equals(_categoria, StringComparison.OrdinalIgnoreCase))
+                    .Where(l => l.Categoria.Nome.Equals(categoria, StringComparison.OrdinalIgnoreCase))
                     .OrderBy(c => c.Nome);
 
-                categoriaAtual = _categoria;
+                categoriaAtual = categoria;
             }
 
             var lanchesListViewModel = new LancheListViewModel
