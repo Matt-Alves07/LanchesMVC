@@ -2,9 +2,8 @@
 
 <div class="container">
     <div class="row">
-        <img src="~/images/Full-Cart-icon.png"/>
-
         <div>
+            <img src="~/images/Full-Cart-icon.png" width="30" height="35"/>
             <h4>Seu carrinho de compras:</h4>
         </div>
 
@@ -25,10 +24,10 @@
                     <tr>
                         <td class="text-center">@item.Quantidade</td>
                         <td class="text-left">@item.Lanche.Nome</td>
-                        <td class="text-right">R$@item.Lanche.Preco.ToString()</td>
+                        <td class="text-right">R$ @item.Lanche.Preco.ToString()</td>
 
                         <td class="text-right">
-                            @((item.Quantidade * item.Lanche.Preco).ToString())
+                            R$ @((item.Quantidade * item.Lanche.Preco).ToString())
                         </td>
 
                         <td>
@@ -44,7 +43,7 @@
                 <tr>
                     <td colspan="3" class="text-right">Total:</td>
                     <td class="text-right">
-                        @Model.CarrinhoCompraTotal.ToString()
+                        R$ @Model.CarrinhoCompraTotal.ToString("0.00")
                     </td>
                 </tr>
             </tfoot>
