@@ -14,6 +14,7 @@ builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDBContext>(
 
 builder.Services.AddTransient<ILanchesRepository, LancheRepository>();
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
 
 //Add session pattern
 builder.Services.AddMemoryCache();

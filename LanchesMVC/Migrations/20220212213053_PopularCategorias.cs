@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System.Text;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -8,8 +9,16 @@ namespace LanchesMVC.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("INSERT INTO lanches.categoria(nome, descricao) VALUES('Normal','Lanche feito com ingredientes normais');");
-            migrationBuilder.Sql("INSERT INTO lanches.categoria(nome, descricao) VALUES('Natural','Lanche feito com ingredientes integrais e/ou naturais');");
+            var query = new StringBuilder();
+            query.Clear();
+
+            query.Append("INSERT INTO lanches.categoria(nome, descricao) VALUES");
+            query.Append("('Normal','Lanche feito com ingredientes normais'),");
+            query.Append("('Natural','Lanche feito com ingredientes integrais e/ou naturais'),");
+            query.Append("('Bebidas','Bebidas Diversas'),");
+            query.Append("('Bebidas Naturais','Sucos feitos a partir de frutas frescas');");
+
+            migrationBuilder.Sql(query.ToString());
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
