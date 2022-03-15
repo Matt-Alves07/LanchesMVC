@@ -34,8 +34,8 @@ namespace LanchesMVC.Migrations
                     email = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     totalPedido = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     totalItensPedido = table.Column<int>(type: "integer", nullable: false),
-                    datapedido = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    dataenvio = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    datapedido = table.Column<string>(type: "character varying(50)", nullable: false),
+                    dataenvio = table.Column<string>(type: "character varying(50)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,6 +49,7 @@ namespace LanchesMVC.Migrations
                 {
                     PedidoDetalheId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Quantidade = table.Column<int>(type: "integer", nullable: false),
                     PedidoId = table.Column<int>(type: "integer", nullable: false),
                     LancheId = table.Column<int>(type: "integer", nullable: false),
                     Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false)

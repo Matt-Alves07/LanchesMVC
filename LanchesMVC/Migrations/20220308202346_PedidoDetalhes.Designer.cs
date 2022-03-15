@@ -190,12 +190,12 @@ namespace LanchesMVC.Migrations
                         .HasColumnType("character varying(25)")
                         .HasColumnName("telefone");
 
-                    b.Property<DateTime?>("dataEnvio")
-                        .HasColumnType("timestamp with time zone")
+                    b.Property<string?>("dataEnvio")
+                        .HasColumnType("character varying(50)")
                         .HasColumnName("dataenvio");
 
-                    b.Property<DateTime>("dataPedido")
-                        .HasColumnType("timestamp with time zone")
+                    b.Property<string>("dataPedido")
+                        .HasColumnType("character varying(50)")
                         .HasColumnName("datapedido");
 
                     b.Property<int>("totalItensPedido")

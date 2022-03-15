@@ -79,14 +79,14 @@ namespace LanchesMVC.Models
         [Column("datapedido")]
         [DataType(DataType.Text)]
         [Display(Name = "Data do pedido")]
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
-        public DateTime dataPedido { get; set; }
+        //[DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        public string dataPedido { get; set; }
 
         [Column("dataenvio")]
         [DataType(DataType.Text)]
         [Display(Name = "Data de envio do pedido")]
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
-        public DateTime? dataEnvio { get; set; }
+        //[DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        public string? dataEnvio { get; set; }
 
         public List<PedidoDetalhe> PeditoItens { get; set; }
     }
