@@ -1,5 +1,5 @@
 # LanchesMVC
-Food delivery, built in .Net 6, using Docker and Postgres
+Food App delivery, built in .Net 6, using Docker and Postgres.
 
 *<h3>Instructions to use:</h3>*
 -> Download the git repository;
