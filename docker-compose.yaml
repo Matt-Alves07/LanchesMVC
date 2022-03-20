@@ -4,7 +4,7 @@ services:
   lanches-app:
     image: lanchesmvc_lanches-app
     build:
-      context: ../.
+      context: /.
       dockerfile: dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
