@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using LanchesMVC.Models;
 using LanchesMVC.Repositories;
 using LanchesMVC.Repositories.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDBContext>(
     options => options.UseNpgsql("User ID=root;Password=postgres;Host=host.docker.internal;Port=5432;Database=lanches;Pooling=true;")
 );
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<AppDBContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddTransient<ILanchesRepository, LancheRepository>();
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
@@ -38,6 +43,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
