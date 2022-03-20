@@ -31,7 +31,7 @@
                         </td>
 
                         <td>
-                            <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" asp-route-LancheId="@item.Lanche.LancheId">
+                            <a asp-controller="CarrinhoCompra" asp-action="RemoverDoCarrinhoCompra" asp-route-LancheId="@item.Lanche.LancheId">
                                 <img src="~/images/remover-do-carrinho.png"/>
                             </a>
                         </td>
@@ -51,9 +51,9 @@
 
         <div class="text-right">
             <div class="btn-group">
-                <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Finalizar Pedido</a>
+                <a class="btn btn-outline-success" asp-controller="Pedido" asp-action="Checkout">Finalizar Pedido</a>
                 &nbsp;&nbsp;&nbsp;
-                <a class="btn btn-primary" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
+                <a class="btn btn-outline-primary" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
             </div>
         </div>
     </div>

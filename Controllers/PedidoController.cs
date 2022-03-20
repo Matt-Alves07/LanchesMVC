@@ -1,5 +1,6 @@
 ﻿using LanchesMVC.Models;
 using LanchesMVC.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LanchesMVC.Controllers
@@ -16,12 +17,14 @@ namespace LanchesMVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Checkout(Pedido pedido)
         {
             int totalItensPedido = 0;
