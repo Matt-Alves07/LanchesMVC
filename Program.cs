@@ -3,6 +3,7 @@ using LanchesMVC.Models;
 using LanchesMVC.Repositories;
 using LanchesMVC.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using LanchesMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,13 +41,12 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 app.UseSession();
-
 app.UseAuthentication();
-
 app.UseAuthorization();
+
+DatabaseManagementService.MigrationInitialisation(app);
 
 app.UseEndpoints(endpoints =>
 {
@@ -59,6 +59,11 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
+
+    endpoints.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
     );
 });
 
