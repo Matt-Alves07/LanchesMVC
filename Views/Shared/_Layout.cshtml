@@ -32,6 +32,11 @@
                             <li><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Administração</a></li>
+                            }
                         </ul>
                     </div>
                     @await Component.InvokeAsync("CategoriaMenu")                    
