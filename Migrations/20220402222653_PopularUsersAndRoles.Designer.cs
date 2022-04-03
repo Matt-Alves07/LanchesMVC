@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LanchesMVC.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20220402201943_PopularUsersERoles")]
-    partial class PopularUsersERoles
+    [Migration("20220402222653_PopularUsersAndRoles")]
+    partial class PopularUsersAndRoles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -266,15 +266,15 @@ namespace LanchesMVC.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5f2dcdc6-a0da-4a21-aff6-cf7bc5985dfa",
-                            ConcurrencyStamp = "2ff528fa-8e70-4b64-a305-499f9547333b",
+                            Id = "af626e9d-106b-4f5a-bd53-40947faf73e1",
+                            ConcurrencyStamp = "77375756-cdf6-4c49-9c3f-7bf321bbbc5b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "72c195ff-79e5-4840-864a-ba1abc9dac33",
-                            ConcurrencyStamp = "1f007696-00ad-47e7-bd95-c49f5f501d02",
+                            Id = "2d709469-c2fa-413e-b240-c1c77389e2d5",
+                            ConcurrencyStamp = "5701d617-bd5a-4719-8f5a-2638a0022aec",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         });
@@ -371,31 +371,33 @@ namespace LanchesMVC.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "71029eae-eaae-410f-bda2-09cf95943e2f",
+                            Id = "672f3b13-7717-4b7b-aa71-a56c094535e1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0e7b76b0-2f9b-467e-b76c-792012d58c3a",
+                            ConcurrencyStamp = "27446710-1b19-43ce-b495-69ee2e988c73",
                             Email = "sysadmin@localhost.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "SYSADMIN@LOCALHOST.COM",
                             NormalizedUserName = "SYSADMIN",
+                            PasswordHash = "7fmvQUWGAQQJTZb3rsYK9jBodY6ZXd/CP6oXvj5y7Jo=",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c9a00d5b-3b1d-442e-bbc8-c8c31aaf3906",
+                            SecurityStamp = "296f61b2-7df7-42c2-8101-14e7b05a08e8",
                             TwoFactorEnabled = false,
                             UserName = "sysadmin"
                         },
                         new
                         {
-                            Id = "b2ad36f2-a35d-4820-b650-2d47cd096715",
+                            Id = "1970fd9c-2f80-4a0b-99ff-378a013f2d5d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "038ebbde-dd34-429a-a9c5-14a9aefbbb2d",
+                            ConcurrencyStamp = "9ad4fe7d-c0b3-4d1e-91d4-f26d99c41f10",
                             Email = "sysmember@localhost.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "SYSMEMBER@LOCALHOST.COM",
                             NormalizedUserName = "SYSMEMBER",
+                            PasswordHash = "KUQtJcxLbPgxjPty4CM6ARiTLu0A+3ncojtUqfZThUQ=",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "94ddbadd-cc72-4d2f-aa5b-961ff42e689b",
+                            SecurityStamp = "11ef2984-a4f3-4d84-818a-b7e48b43873a",
                             TwoFactorEnabled = false,
                             UserName = "sysmember"
                         });
@@ -465,13 +467,13 @@ namespace LanchesMVC.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "71029eae-eaae-410f-bda2-09cf95943e2f",
-                            RoleId = "5f2dcdc6-a0da-4a21-aff6-cf7bc5985dfa"
+                            UserId = "672f3b13-7717-4b7b-aa71-a56c094535e1",
+                            RoleId = "af626e9d-106b-4f5a-bd53-40947faf73e1"
                         },
                         new
                         {
-                            UserId = "b2ad36f2-a35d-4820-b650-2d47cd096715",
-                            RoleId = "72c195ff-79e5-4840-864a-ba1abc9dac33"
+                            UserId = "1970fd9c-2f80-4a0b-99ff-378a013f2d5d",
+                            RoleId = "2d709469-c2fa-413e-b240-c1c77389e2d5"
                         });
                 });
 

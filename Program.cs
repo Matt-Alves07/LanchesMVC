@@ -22,6 +22,17 @@ builder.Services.AddTransient<ILanchesRepository, LancheRepository>();
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
 
+builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("Admin",
+            politica =>
+            {
+                politica.RequireRole("Admin");
+            }
+        );
+    }
+);
+
 //Add session pattern
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();

@@ -1,4 +1,5 @@
-﻿using LanchesMVC.ViewModels;
+﻿using LanchesMVC.Services;
+using LanchesMVC.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -34,9 +35,9 @@ namespace LanchesMVC.Controllers
             var user = await _userManager.FindByNameAsync(loginVM.UserName);
             if (user != null)
             {
-                var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
-                if (result.Succeeded)
+                if (user.PasswordHash == loginVM.Password)
                 {
+                    await _signInManager.SignInAsync(user, false);
                     if (string.IsNullOrEmpty(loginVM.ReturnUrl))
                         return RedirectToAction("Index", "Home");
 

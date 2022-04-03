@@ -59,11 +59,9 @@ namespace LanchesMVC.Models
                 NormalizedEmail = "SYSADMIN@LOCALHOST.COM",
                 EmailConfirmed = true,
                 LockoutEnabled = false,
-                SecurityStamp = Guid.NewGuid().ToString()
+                SecurityStamp = Guid.NewGuid().ToString(),
+                PasswordHash = "Admin123"
             };
-
-            PasswordHasher<IdentityUser> hasherAdmin = new PasswordHasher<IdentityUser>();
-            hasherAdmin.HashPassword(userAdmin, "Admin*123");
 
             builder.Entity<IdentityUser>().HasData(userAdmin);
 
@@ -76,11 +74,9 @@ namespace LanchesMVC.Models
                 NormalizedEmail = "SYSMEMBER@LOCALHOST.COM",
                 EmailConfirmed = true,
                 LockoutEnabled = false,
-                SecurityStamp = Guid.NewGuid().ToString()
+                SecurityStamp = Guid.NewGuid().ToString(),
+                PasswordHash = "Member123"
             };
-
-            PasswordHasher<IdentityUser> hasherMember = new PasswordHasher<IdentityUser>();
-            hasherMember.HashPassword(userMember, "Member*123");
 
             builder.Entity<IdentityUser>().HasData(userMember);
         }
