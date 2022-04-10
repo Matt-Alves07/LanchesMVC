@@ -61,6 +61,11 @@ DatabaseManagementService.MigrationInitialisation(app);
 
 app.UseEndpoints(endpoints =>
 {
+    endpoints.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
+    );
+
     endpoints.MapAreaControllerRoute(
         name: "categoriaFiltro",
         areaName: "Lanches",
@@ -70,11 +75,6 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}"
-    );
-
-    endpoints.MapControllerRoute(
-    name: "areas",
-    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
     );
 });
 

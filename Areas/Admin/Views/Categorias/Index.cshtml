@@ -1,0 +1,41 @@
+﻿@model IEnumerable<LanchesMVC.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<h1>Todas as categorias</h1>
+
+<p>
+    <a type="button" class="btn btn-outline-success" asp-action="Create">+ Nova categoria</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                <a type="button" class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a type="button" class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                <a type="button" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
