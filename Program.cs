@@ -62,7 +62,7 @@ DatabaseManagementService.MigrationInitialisation(app);
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
-    name: "areas",
+    name: "admin",
     pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
     );
 

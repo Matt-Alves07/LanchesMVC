@@ -1,0 +1,59 @@
+﻿@model IEnumerable<LanchesMVC.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Pedidos";
+}
+
+<h1>Todos os pedidos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complemento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataEnvio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome) @Html.DisplayFor(modelItem => item.Sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataPedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataEnvio)
+            </td>
+            <td>
+                <a type="button" class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.PedidoId">Editar</a>
+                <a type="button" class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.PedidoId">Details</a>
+                <a type="button" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.PedidoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
