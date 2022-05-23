@@ -4,11 +4,19 @@ using LanchesMVC.Repositories;
 using LanchesMVC.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using LanchesMVC.Services;
+using ReflectionIT.Mvc.Paging;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddPaging(options =>
+    {
+        options.ViewName = "Bootstrap4";
+        options.PageParameterName = "pageindex";
+    }
+);
 
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDBContext>(
     options => options.UseNpgsql("User ID=root;Password=postgres;Host=host.docker.internal;Port=5432;Database=lanches;Pooling=true;")
