@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LanchesMVC.Models;
 using Microsoft.AspNetCore.Authorization;
+using ReflectionIT.Mvc.Paging;
 
 namespace LanchesMVC.Areas.Admin.Controllers
 {
@@ -18,10 +19,23 @@ namespace LanchesMVC.Areas.Admin.Controllers
         }
 
         // GET: Admin/Lanches
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var appDBContext = _context.Lanches.Include(l => l.Categoria);
+        //    return View(await appDBContext.ToListAsync());
+        //}
+
+        public async Task<IActionResult> Index(string filter, int pageindex = 1, string sort = "Nome")
         {
-            var appDBContext = _context.Lanches.Include(l => l.Categoria);
-            return View(await appDBContext.ToListAsync());
+            var resultado = _context.Lanches.Include(l => l.Categoria).AsQueryable();
+
+            if (!string.IsNullOrEmpty(filter))
+                resultado = resultado.Where(l => l.Nome.Contains(filter));
+
+            var model = await PagingList.CreateAsync(resultado, 10, pageindex, sort, "Nome");
+            model.RouteValue = new RouteValueDictionary { { "filter", filter } };
+
+            return View(model);
         }
 
         // GET: Admin/Lanches/Details/5

@@ -62,15 +62,17 @@
     <div class="form-group">
         <div class="row">
             <div class="col-md-2">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsLanchePreferido" /> @Html.DisplayNameFor(model => model.IsLanchePreferido)
-                </label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" asp-for="IsLanchePreferido" id="switchPreferido" />
+                    <label class="form-check-label" for="switchPreferido">@Html.DisplayNameFor(model => model.IsLanchePreferido)</label>
+                </div>
             </div>
 
             <div class="col-md-2">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="EmEstoque" /> @Html.DisplayNameFor(model => model.EmEstoque)
-                </label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" asp-for="EmEstoque" id="switchEstoque" />
+                    <label class="form-check-label" for="switchEstoque">@Html.DisplayNameFor(model => model.EmEstoque)</label>
+                </div>
             </div>
         </div>
     </div>

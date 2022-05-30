@@ -1,14 +1,31 @@
-﻿@model IEnumerable<LanchesMVC.Models.Lanche>
+﻿@model ReflectionIT.Mvc.Paging.PagingList<LanchesMVC.Models.Lanche>
 
 @{
     ViewData["Title"] = "Lanches";
 }
 
-<h1>Todos os lanches</h1>
+<h1>Lanches(Total cadastrado: @Model.TotalRecordCount)</h1>
 
-<p>
-    <a type="button" class="btn btn-outline-success" asp-action="Create">+ Novo lanche</a>
-</p>
+<form method="get" class="form-inline">
+    <div class="row">
+        <div class="col-9">
+            <input name="filter" class="form-control" placeholder="Digite o nome para pesquisa....." value="@Model.RouteValue["Filter"]" />
+        </div>
+        <div class="col-1">
+            <button type="submit" class="btn btn-outline-info">
+                <span class="glyphicon glyphicon-search" aria-hidden="true">Procurar</span>
+            </button>
+        </div>
+        <div class="col-2">
+            <a type="button" class="btn btn-outline-success" asp-action="Create">+ Novo lanche</a>
+        </div>
+    </div>
+</form>
+
+<div>
+    <vc:pager paging-list="@Model"></vc:pager>
+</div>
+
 <table class="table">
     <thead>
         <tr>
