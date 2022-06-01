@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using LanchesMVC.Models;
 using Microsoft.AspNetCore.Authorization;
 using ReflectionIT.Mvc.Paging;
+using LanchesMVC.ViewModels;
 
 namespace LanchesMVC.Areas.Admin.Controllers
 {
@@ -15,6 +16,27 @@ namespace LanchesMVC.Areas.Admin.Controllers
         public PedidosController(AppDBContext context)
         {
             _context = context;
+        }
+
+        public IActionResult PedidoLanches(int? id)
+        {
+            var pedido = _context.Pedidos
+                .Include(pi => pi.PeditoItens)
+                .ThenInclude(l => l.Lanche)
+                .FirstOrDefault(p => p.PedidoId == id);
+
+            if (pedido == null)
+            {
+                Response.StatusCode = 404;
+                return View("PedidoNotFound", id.Value);
+            }
+
+            PedidoLanchesViewModel pedidoLanches = new PedidoLanchesViewModel()
+            {
+                Pedido = pedido,
+                PedidoDetalhe = pedido.PeditoItens
+            };
+            return View(pedidoLanches);
         }
 
         // GET: Admin/Pedidos
@@ -31,7 +53,7 @@ namespace LanchesMVC.Areas.Admin.Controllers
                 resultado = resultado.Where(p => p.Nome.Contains(filter));
             }
 
-            var model = await PagingList.CreateAsync(resultado, 5, pageindex, sort, "Nome");
+            var model = await PagingList.CreateAsync(resultado, 10, pageindex, sort, "Nome");
             model.RouteValue = new RouteValueDictionary() { { "filter", filter } };
 
             return View(model);
@@ -60,7 +82,7 @@ namespace LanchesMVC.Areas.Admin.Controllers
         {
             return View();
         }
-
+  
         // POST: Admin/Pedidos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

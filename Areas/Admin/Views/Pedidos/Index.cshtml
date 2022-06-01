@@ -68,8 +68,9 @@
             </td>
             <td>
                 <a type="button" class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.PedidoId">Editar</a>
-                <a type="button" class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.PedidoId">Details</a>
-                <a type="button" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.PedidoId">Delete</a>
+                <a type="button" class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.PedidoId">Detalhes</a>
+                <a type="button" class="btn btn-outline-primary" asp-action="PedidoLanches" asp-route-id="@item.PedidoId">Itens</a>
+                <a type="button" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.PedidoId">Excluir</a>
             </td>
         </tr>
 }

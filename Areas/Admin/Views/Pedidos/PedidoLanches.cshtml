@@ -1,0 +1,46 @@
+﻿@model LanchesMVC.ViewModels.PedidoLanchesViewModel
+
+@{
+    ViewData["Title"] = "Lanches do pedido";
+    Decimal totalPedido = 0;
+}
+
+<h1>Lanches do pedido:</h1>
+<hr/>
+
+<h3>Pedido      :   @Html.DisplayFor(model => @Model.Pedido.PedidoId)</h3>
+<h3>Cliente     :   @Html.DisplayFor(model => @Model.Pedido.Nome)</h3>
+<h3>Data        :   @Html.DisplayFor(model => @Model.Pedido.dataPedido)</h3>
+<h3>Envio       :   @Html.DisplayFor(model => @Model.Pedido.dataEnvio)</h3>
+<hr/>
+
+<table class="table">
+    @foreach(var item in @Model.Pedido.PeditoItens)
+    {
+        totalPedido += (@item.Lanche.Preco * @item.Quantidade);
+
+        <tr>
+            <td align="center">
+                <h3>@Html.DisplayFor(modelItem => item.Lanche.Nome)</h3>
+            </td>
+            <td align="center">
+                <img src="@item.Lanche.ImagemUrl" class="img-fluid" height="100" width="100">
+            </td>
+            <td align="right">
+                <h3>@(((Decimal)item.Lanche.Preco).ToString("R$0.00"))</h3>
+            </td>
+            <td align="right">
+                <h3>(@Html.DisplayFor(modelItem => item.Quantidade))</h3>
+            </td>
+        </tr>
+    }
+
+    <tr>
+        <td colspan="2">&nbsp;</td>
+        <td align="right">
+            <h3>Total do pedido :   @(((Decimal)@totalPedido).ToString("R$0.00"))</h3>
+        </td>
+    </tr>
+</table>
+
+<a asp-action="Index" class="btn btn-outline-primary">Retornar a lista</a>
