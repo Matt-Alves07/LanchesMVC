@@ -1,0 +1,74 @@
+﻿@model IEnumerable<LanchesMVC.Models.Pedido>
+
+<h2>Pedidos por período</h2>
+
+
+<div class="panel panel-primary">
+    <hr />
+    <div class="panel-heading">
+        <div class="row">
+            <h3 class="panel-title">Total de pedidos:   @Model.Count()</h3>
+            <h3 class="panel-title">Total de lanches:  @Model.Sum(obj => obj.totalItensPedido)</h3>
+            <h3 class="panel-title">Somatório dos pedidos:  @Model.Sum(obj => obj.totalPedido)</h3>
+        </div>
+    </div>
+    <hr />
+
+    <div class="panel-body">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr class="success">
+                    <th>
+                        @Html.DisplayNameFor(model => model.PedidoId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.totalPedido)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.totalItensPedido)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dataEnvio)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PedidoId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.totalPedido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.totalItensPedido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dataEnvio)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

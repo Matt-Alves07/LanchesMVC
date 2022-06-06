@@ -129,6 +129,8 @@ namespace LanchesMVC.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+                pedido.dataEnvio = pedido.dataEnvio.Value.ToUniversalTime();
+                pedido.dataPedido = pedido.dataPedido.ToUniversalTime();
                 try
                 {
                     _context.Update(pedido);

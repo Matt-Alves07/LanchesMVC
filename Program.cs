@@ -5,6 +5,7 @@ using LanchesMVC.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using LanchesMVC.Services;
 using ReflectionIT.Mvc.Paging;
+using LanchesMVC.Areas.Admin.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.AddTransient<ILanchesRepository, LancheRepository>();
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
+builder.Services.AddScoped<RelatorioVendaService>();
 
 builder.Services.AddAuthorization(options =>
     {

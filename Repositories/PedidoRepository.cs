@@ -16,7 +16,7 @@ namespace LanchesMVC.Repositories
 
         public void CriarPedido(Pedido pedido)
         {
-            pedido.dataPedido = DateTime.Now.ToString();
+            pedido.dataPedido = DateTime.Now.ToUniversalTime();
             _appDBContext.Pedidos.Add(pedido);
             _appDBContext.SaveChanges();
 
