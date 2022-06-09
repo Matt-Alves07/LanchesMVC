@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using LanchesMVC.Services;
 using ReflectionIT.Mvc.Paging;
 using LanchesMVC.Areas.Admin.Services;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,7 @@ builder.Services.AddTransient<ILanchesRepository, LancheRepository>();
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<RelatorioVendaService>();
+builder.Services.Configure<ConfiguracaoImagens>(builder.Configuration.GetSection("ConfiguracaoPastaImagens"));
 
 builder.Services.AddAuthorization(options =>
     {
@@ -47,7 +49,6 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
 builder.Services.AddScoped(sp => CarrinhoCompra.GetCarrinhoCompra(sp));
 
 var app = builder.Build();
